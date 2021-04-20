@@ -1,0 +1,163 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Class LoginScreen {
+createAccount
+Enter username/password
+Questions/ContactUs
+}
+
+Class HomePage {
+CheckingAcct
+SavingAcct
+InvestmentAcct
+AccountSnapshots
+Menu
+--AccountsHome
+--ProfileSettings
+--Transfer
+--Help
+LogOut
+}
+Class CreateAccountScreen {
+Cancel
+FormForInfo
+Submit
+}
+Class FAQ_ContactUs {
+BackToLogin
+CallCustomerService
+FAQDropMenus
+}
+
+Class CheckingAcct {
+CheckingAcctx0000
+MoneyInAccount
+RecentTransactions(5)
+--SeeMore(20)
+-Help
+-Transfer
+-AccountsHome
+AccountInfo
+--AccountNumber
+--RoutingNumber
+--OnlineStatement
+}
+Class SavingAcct {
+SavingsAcctx0000
+MoneyInAccount
+RecentTransactions(5)
+--SeeMore(20)
+-Help
+-Transfer
+-AccountsHome
+AccountInfo
+--AccountNumber
+--RoutingNumber
+--OnlineStatement
+}
+Class InvestmentAcct {
+InvestmentAcctx0000
+MoneyInAccount
+RecentTransactions(5)
+--SeeMore(20)
+-Help
+-Transfer
+-AccountsHome
+AccountInfo
+--AccountNumber
+--RoutingNumber
+--OnlineStatement
+}
+
+Class ProfileSettings {
+- PersonalInfo
+--PhoneNumber
+--Address
+--Email
+- OnlineStatements
+--PaperOrDigital
+}
+
+Class Transfer {
+FromAccount
+--ShowBalance
+ToAccount
+--ShowBalance
+HowMuch
+--EnterAmount
+-TransferButton
+}
+Class ConfirmScreen {
+Display
+--FromAccount
+--ToAccount
+--Amount
+-ConfirmButton
+-CancelButton
+}
+Class SuccessfulOrNot {
+StatusDisplay
+-MakeAnotherTransfer?
+}
+
+Class Help {
+FAQs
+ContactUs
+--ByEmail
+--PhoneNumber
+}
+
+
+'LOGIN PAGE INTERACTION
+'if they log in
+HomePage <|--- LoginScreen
+LoginScreen <|--- HomePage
+'if create account
+CreateAccountScreen <|--- LoginScreen
+LoginScreen <|--- CreateAccountScreen
+'After account created
+HomePage <|-- CreateAccountScreen
+'if questions/contact
+LoginScreen <|-- FAQ_ContactUs
+FAQ_ContactUs <|-- LoginScreen
+
+
+'HOMEPAGE INTERACTION
+'to CheckingAccount
+CheckingAcct <|---- HomePage
+HomePage <|---- CheckingAcct
+'to SavingsAccount
+SavingAcct <|---- HomePage
+HomePage <|---- SavingAcct
+'to InvestmentAccount
+InvestmentAcct <|---- HomePage
+HomePage <|---- InvestmentAcct
+'to ProfileSettings
+ProfileSettings <|--- HomePage
+HomePage <|--- ProfileSettings
+'to Transfer
+Transfer <|-- HomePage
+HomePage <|-- Transfer
+
+'TRANSFER INTERACTION
+ConfirmScreen <|- Transfer
+SuccessfulOrNot <|--- ConfirmScreen
+Transfer <|-- SuccessfulOrNot
+HomePage <|----- SuccessfulOrNot
+
+'HELP INTERACTION
+HomePage <|----- Help
+Help <|----- HomePage
+
+'ACCOUNTS HELP TRANSFER
+Help <|---- CheckingAcct
+Help <|---- SavingAcct
+Help <|---- InvestmentAcct
+Transfer <|---- CheckingAcct
+Transfer <|---- SavingAcct
+Transfer <|---- InvestmentAcct
+
+
+
+@enduml
