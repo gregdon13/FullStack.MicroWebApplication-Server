@@ -1,0 +1,74 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+Class User {
+@PrimaryID
+@Entity
+UserInfo;
+ThreeAccounts;
+}
+Class UserInfo {
+Name
+Email
+PhoneNumber
+Address
+Occupation
+UserName
+Password
+}
+Class ThreeAccounts {
+CheckingAccount;
+SavingsAccount;
+InvestmentAccount;
+}
+Abstract Class Account {
+AccountNumber;
+Balance;
+}
+Class CheckingAccount {
+AccountNumber;
+Balance;
+}
+Class SavingsAccount {
+AccountNumber;
+Balance;
+}
+Class InvestmentAccount {
+AccountNumber;
+Balance;
+}
+
+Class Login {
+CheckIfValidInputUserName();
+CheckIfValidInputPassword();
+CreateAccount();
+Help();
+}
+
+'Maybe a UserController - createUser(), UpdateUser(), DeleteUser(),
+
+Class UserController {
+CreateUser();
+UpdateUser();
+'UpdateAccount();
+'DeleteAccount();
+DeleteUser();
+
+}
+
+Class AccountController {
+PUTWithdraw(@PathVariable AccountNumber, double amount);
+PUTTransfer(@PathVariable AccountNumberOne, @PathVariable AccountNumberTwo, double amount);
+PUT Deposit(@PathVariable AccountNumber, double amount);
+POST CreateAccount(Long AccountNumber, double balance);
+}
+
+Class AccountFactory {
+GenerateAccountNumber(Date dateOfBirth, Accou);
+}
+
+Account <|-- CheckingAccount
+Account <|-- SavingsAccount
+Account <|-- InvestmentAccount
+
+
+@enduml
