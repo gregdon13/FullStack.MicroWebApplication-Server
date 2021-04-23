@@ -1,13 +1,14 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 Class User {
-@PrimaryID
+@PrimaryID Long ID
 @Entity
 UserInfo;
 ThreeAccounts;
 }
 Class UserInfo {
-Name
+firstName
+lastName
 Email
 PhoneNumber
 Address
@@ -52,7 +53,13 @@ UpdateUser();
 'UpdateAccount();
 'DeleteAccount();
 DeleteUser();
-
+}
+Class UserService {
+Create();
+findById(@PathVariable Long id);
+}
+Interface UserRepository {
+implements CrudRepository;
 }
 
 Class AccountController {
@@ -60,15 +67,27 @@ PUTWithdraw(@PathVariable AccountNumber, double amount);
 PUTTransfer(@PathVariable AccountNumberOne, @PathVariable AccountNumberTwo, double amount);
 PUT Deposit(@PathVariable AccountNumber, double amount);
 POST CreateAccount(Long AccountNumber, double balance);
+GET GetBalance();
+}
+Class AccountService {
+UpdateBalance();
+createAccount();
+}
+Interface AccountRepository {
+implements CrudRepository;
 }
 
 Class AccountFactory {
-GenerateAccountNumber(Date dateOfBirth, Accou);
+GenerateAccountNumber(UserId, firstName);
 }
 
 Account <|-- CheckingAccount
 Account <|-- SavingsAccount
 Account <|-- InvestmentAccount
 
+UserRepository <|-- UserService
+UserService <|-- UserController
 
+AccountRepository <|-- AccountService
+AccountService <|-- AccountController
 @enduml

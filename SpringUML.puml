@@ -1,0 +1,67 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Class UserEntity {
+@Id Long ID;
+String firstName;
+String lastName;
+String address;
+String email;
+String phoneNumber;
+String occupation;
+String userName;
+String password;
+getters and setters
+}
+Class UserController {}
+Class UserService {}
+Interface UserRepository {}
+Class AccountEntity {
+@Id Long ID;
+Long accountNumber;
+Double accountBalance;
+String accountType;
+Long userId;
+getters and setters
+}
+Class AccountController {}
+Class AccountService {}
+Interface AccountRepository {}
+Class FaqEntity {
+@Id Long id;
+String question;
+String answer;
+getters and setters
+}
+Class FaqController {}
+Class FaqService {}
+Interface FaqRepository {}
+Class ContactEntity {
+@Id Long id;
+String number;
+String email;
+String department;
+getters and setters
+}
+Class ContactController {}
+Class ContactService {}
+Interface ContactRepository {}
+
+
+UserEntity <|-- UserController
+UserController <|-- UserService
+UserService <|-- UserRepository
+
+AccountEntity <|-- AccountController
+AccountController <|-- AccountService
+AccountService <|-- AccountRepository
+
+FaqEntity <|-- FaqController
+FaqController <|-- FaqService
+FaqService <|-- FaqRepository
+
+ContactEntity <|-- ContactController
+ContactController <|-- ContactService
+ContactService <|-- ContactRepository
+
+@enduml
