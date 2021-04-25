@@ -4,15 +4,15 @@ import entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import repositories.AccountsRepository;
+import repositories.AccountRepository;
 
 
 @RestController
 public class AccountService {
-    private final AccountsRepository accountsRepository;
+    private final AccountRepository accountsRepository;
 
     @Autowired
-    public AccountService(AccountsRepository accountsRepository) {
+    public AccountService(AccountRepository accountsRepository) {
         this.accountsRepository = accountsRepository;
     }
 
