@@ -1,6 +1,7 @@
 package services;
 
 import entities.Account;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import repositories.AccountsRepository;
@@ -10,6 +11,7 @@ import repositories.AccountsRepository;
 public class AccountService {
     private final AccountsRepository accountsRepository;
 
+    @Autowired
     public AccountService(AccountsRepository accountsRepository) {
         this.accountsRepository = accountsRepository;
     }
