@@ -1,11 +1,11 @@
-package controllers;
+package com.bmmt.demo.controllers;
 
-import entities.Account;
+import com.bmmt.demo.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.AccountService;
+import com.bmmt.demo.services.AccountService;
 
 @RestController
 public class AccountController {
