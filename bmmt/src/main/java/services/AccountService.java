@@ -1,5 +1,6 @@
 package services;
 
+<<<<<<< HEAD
 import entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,4 +42,7 @@ public class AccountService {
         original.setUserId(account.getUserId());
         return accountsRepository.save(original);
     }
+=======
+public class AccountService {
+>>>>>>> 93289fb49a00e1b7e661fb905cb5e4107c5f1968
 }
