@@ -1,5 +1,6 @@
 package controllers;
 
+<<<<<<< HEAD
 import entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,4 +36,7 @@ public class AccountController {
     public ResponseEntity<Account> update(@PathVariable Long id, Account account) {
         return new ResponseEntity<>(accountService.update(id, account), HttpStatus.OK);
     }
+=======
+public class AccountController {
+>>>>>>> 93289fb49a00e1b7e661fb905cb5e4107c5f1968
 }
