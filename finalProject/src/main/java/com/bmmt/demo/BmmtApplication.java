@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 public class BmmtApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BmmtApplication.class, args);
 	}
 
