@@ -1,13 +1,13 @@
-package services;
+package com.bmmt.demo.services;
 
-import entities.Account;
+import com.bmmt.demo.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import repositories.AccountRepository;
+import com.bmmt.demo.repositories.AccountRepository;
 
 
-@RestController
+@Service
 public class AccountService {
     private final AccountRepository accountsRepository;
 
