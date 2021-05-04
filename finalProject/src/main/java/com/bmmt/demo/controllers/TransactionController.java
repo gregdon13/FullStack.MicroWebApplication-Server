@@ -31,6 +31,11 @@ public class TransactionController {
         return new ResponseEntity<>(transactionService.show(id), HttpStatus.OK);
     }
 
+    @GetMapping("transactions/{accountOne}")
+    public ResponseEntity<Iterable<Transaction>> getTransactionsByAccount(@PathVariable Long accountOne) {
+        return new ResponseEntity<>(transactionService.transactionsByAccount(accountOne), HttpStatus.OK);
+    }
+
     @PostMapping("/transaction")
     public ResponseEntity<Transaction> create(Transaction transaction) {
         return new ResponseEntity<>(transactionService.create(transaction), HttpStatus.CREATED);
