@@ -34,6 +34,6 @@ public class TransactionService {
     }
 
     public Iterable<Transaction> transactionsByAccount(@PathVariable Long accountOne) {
-        return transactionRepo.findByAccount(accountOne);
+        return transactionRepo.findByAccountOne(accountOne);
     }
 }
