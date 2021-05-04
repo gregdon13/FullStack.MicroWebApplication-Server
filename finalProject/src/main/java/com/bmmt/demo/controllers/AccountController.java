@@ -31,6 +31,16 @@ public class AccountController {
         return new ResponseEntity<>(accountService.show(id), HttpStatus.OK);
     }
 
+    @GetMapping("/account/number/{accountNumber}")
+    public ResponseEntity<Account> getByAccountNumber(@PathVariable Long accountNumber) {
+        return new ResponseEntity<>(accountService.findByAccountNum(accountNumber), HttpStatus.OK);
+    }
+
+    @GetMapping("/account/user/{userId}")
+    public ResponseEntity<Iterable<Account>> getAllUserAccounts(@PathVariable Long userId) {
+        return new ResponseEntity<>(accountService.findAllUserAccounts(userId), HttpStatus.OK);
+    }
+
     @PutMapping("/account/{id}")
     public ResponseEntity<Account> update(@PathVariable Long id, Account account) {
         return new ResponseEntity<>(accountService.update(id, account), HttpStatus.OK);
