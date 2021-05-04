@@ -8,12 +8,12 @@ import javax.persistence.Id;
 public class Transaction {
     @Id
     @GeneratedValue
-    private long id;
-    private long accountOne;
-    private long accountTwo;
+    private Long id;
+    private Long accountOne;
+    private Long accountTwo;
     private String transactionType;
-    private double amount;
-    private long userId;
+    private Double amount;
+    private Long userId;
 
     public long getId() {
         return id;
