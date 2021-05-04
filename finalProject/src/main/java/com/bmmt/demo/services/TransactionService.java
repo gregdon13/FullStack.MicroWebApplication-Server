@@ -33,4 +33,7 @@ public class TransactionService {
         return transactionRepo.findById(id).get();
     }
 
+    public Iterable<Transaction> transactionsByAccount(@PathVariable Long accountOne) {
+        return transactionRepo.findByAccount(accountOne);
+    }
 }
