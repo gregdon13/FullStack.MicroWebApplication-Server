@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.stream.Stream;
 
 @Service
 public class TransactionService {
@@ -21,19 +20,19 @@ public class TransactionService {
         return transactionRepo.findAll();
     }
 
-    public Iterable<Transaction> transactionsByUser (@PathVariable long userId) {
-        return transactionRepo.findAllByUserId(userId);
+    public Iterable<Transaction> transactionsByUser (@PathVariable Long userId) {
+        return transactionRepo.findByUserId(userId);
     }
 
     public Transaction create(Transaction transaction) {
         return transactionRepo.save(transaction);
     }
 
-    public Transaction show(@PathVariable Long id) {
+    public Transaction show(Long id) {
         return transactionRepo.findById(id).get();
     }
 
-    public Iterable<Transaction> transactionsByAccount(@PathVariable Long accountOne) {
+    public Iterable<Transaction> transactionsByAccount(Long accountOne) {
         return transactionRepo.findByAccountOne(accountOne);
     }
 }
