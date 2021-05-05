@@ -5,10 +5,9 @@ import com.bmmt.demo.services.FaqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class FaqController {
     private final FaqService faqService;
 
@@ -37,9 +36,9 @@ public class FaqController {
         return new ResponseEntity<>(faqService.update(id, faq), HttpStatus.OK);
     }
 
-//    @DeleteMapping("/faq/{id}")
-//    public ResponseEntity<Boolean> destroy(@PathVariable Faq faq){
-//        return new ResponseEntity<>(faqService.delete(faq)), HttpStatus.OK);
-//    }
+    @DeleteMapping("/faq/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Faq faq){
+        return new ResponseEntity<>(faqService.delete(faq), HttpStatus.OK);
+    }
 
 }
