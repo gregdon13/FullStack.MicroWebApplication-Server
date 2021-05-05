@@ -1,6 +1,6 @@
 package com.bmmt.demo.controllers;
 
-import com.bmmt.demo.entities.User;
+import com.bmmt.demo.entities.UserProfile;
 import com.bmmt.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,23 +18,23 @@ public class UserController {
 
 
     @PostMapping("/user")
-    public ResponseEntity<User>create(User user) {
-        return new ResponseEntity<>(userService.create(user), HttpStatus.CREATED);
+    public ResponseEntity<UserProfile>create(UserProfile userProfile) {
+        return new ResponseEntity<>(userService.create(userProfile), HttpStatus.CREATED);
     }
 
     @GetMapping("/user/")
-    public ResponseEntity<Iterable<User>> index() {
+    public ResponseEntity<Iterable<UserProfile>> index() {
 
         return new ResponseEntity<>(userService.index(), HttpStatus.OK);
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> show(@PathVariable Long id) {
+    public ResponseEntity<UserProfile> show(@PathVariable Long id) {
         return new ResponseEntity<>(userService.show(id), HttpStatus.OK);
     }
     @PutMapping("/user/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, User user){
-        return new ResponseEntity<>(userService.update(id, user), HttpStatus.OK);
+    public ResponseEntity<UserProfile> update(@PathVariable Long id, UserProfile userProfile){
+        return new ResponseEntity<>(userService.update(id, userProfile), HttpStatus.OK);
     }
 
     @DeleteMapping("/user/{id}")

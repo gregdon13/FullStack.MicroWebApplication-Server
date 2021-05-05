@@ -2,12 +2,13 @@ package com.bmmt.demo.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Transaction {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long accountOne;
     private Long accountTwo;
@@ -15,11 +16,26 @@ public class Transaction {
     private Double amount;
     private Long userId;
 
-    public long getId() {
+    public Transaction() {
+    }
+
+    public Transaction(Long accountOne, Long accountTwo, String transactionType, Double amount, Long userId) {
+        this.accountOne = accountOne;
+        this.accountTwo = accountTwo;
+        this.transactionType = transactionType;
+        this.amount = amount;
+        this.userId = userId;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public long getUserId() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
         return userId;
     }
 
@@ -27,7 +43,7 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public long getAccountOne() {
+    public Long getAccountOne() {
         return accountOne;
     }
 
@@ -35,7 +51,7 @@ public class Transaction {
         this.accountOne = accountOne;
     }
 
-    public long getAccountTwo() {
+    public Long getAccountTwo() {
         return accountTwo;
     }
 
@@ -51,7 +67,7 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
