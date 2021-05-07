@@ -1,7 +1,7 @@
 package com.bmmt.demo.repositories;
 
-import com.bmmt.demo.entities.User;
+import com.bmmt.demo.entities.UserProfile;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserProfile, Long> {
 }
