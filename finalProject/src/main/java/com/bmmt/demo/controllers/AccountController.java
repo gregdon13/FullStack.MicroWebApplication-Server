@@ -46,6 +46,12 @@ public class AccountController {
         return new ResponseEntity<>(accountService.findAllUserAccounts(userId), HttpStatus.OK);
     }
 
+    //Individual accounts
+    @GetMapping("/account/user/{userId}/{accountName}")
+    public ResponseEntity<Account> getUserChecking(@PathVariable Long userId, @PathVariable String accountName) {
+        return new ResponseEntity<>(accountService.findOneUserAccount(userId, accountName), HttpStatus.OK);
+    }
+
     @PutMapping("/account/{id}")
     public ResponseEntity<Account> update(@PathVariable Long id, Account account) {
         return new ResponseEntity<>(accountService.update(id, account), HttpStatus.OK);

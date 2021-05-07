@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.bmmt.demo.repositories.AccountRepository;
 
+import java.time.LocalDate;
+
 
 @Service
 public class AccountService {
@@ -44,6 +46,22 @@ public class AccountService {
         return true;
     }
 
+    public Account findOneUserAccount(Long userId, String accountName) {
+        return accountsRepository.findUserCheckingAccount(userId, accountName);
+    }
+
+//    public Account findUserChecking(Long userId, String accountName) {
+//        return accountsRepository.findUserCheckingAccount(userId, accountName);
+//    }
+//
+//    public Account findUserSavings(Long userId, String accountName) {
+//        return accountsRepository.findUserSavingsAccount(userId, accountName);
+//    }
+//
+//    public Account findUserInvestment(Long userId, String accountName) {
+//        return accountsRepository.findUserInvestmentAccount(userId, accountName);
+//    }
+
     public Account update(Long id, Account account) {
         Account original = accountsRepository.findById(id).get();
         original.setAccountType(account.getAccountType());
@@ -56,7 +74,7 @@ public class AccountService {
     public Account deposit(Double amount, Long accountNumber) {
         Account account = accountsRepository.findAccountByAccountNumber(accountNumber);
         account.setBalance(account.getBalance() + amount);
-        Transaction transaction = new Transaction(account.getAccountNumber(), null, "Deposit", amount, account.getUserId());
+        Transaction transaction = new Transaction(LocalDate.now(), account.getAccountNumber(), null, "Deposit", amount, account.getUserId());
         transactionRepository.save(transaction);
         return accountsRepository.save(account);
     }
@@ -64,7 +82,7 @@ public class AccountService {
     public Account withdraw(Double amount, Long accountNumber) {
         Account account = accountsRepository.findAccountByAccountNumber(accountNumber);
         account.setBalance(account.getBalance() - amount);
-        Transaction transaction = new Transaction(account.getAccountNumber(), null, "Withdraw", amount, account.getUserId());
+        Transaction transaction = new Transaction(LocalDate.now(), account.getAccountNumber(), null, "Withdraw", amount, account.getUserId());
         transactionRepository.save(transaction);
         return accountsRepository.save(account);
     }
