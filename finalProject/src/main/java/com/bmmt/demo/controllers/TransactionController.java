@@ -21,7 +21,7 @@ public class TransactionController {
         return new ResponseEntity<>(transactionService.index(), HttpStatus.OK);
     }
 
-    @GetMapping("/transactions/user/{userId}")
+    @GetMapping("/transaction/user/{userId}")
     public ResponseEntity<Iterable<Transaction>> getAllFromUser(@PathVariable Long userId) {
         return new ResponseEntity<>(transactionService.transactionsByUser(userId), HttpStatus.OK);
     }
@@ -31,7 +31,7 @@ public class TransactionController {
         return new ResponseEntity<>(transactionService.show(id), HttpStatus.OK);
     }
 
-    @GetMapping("transactions/account/{accountOne}")
+    @GetMapping("transaction/account/{accountOne}")
     public ResponseEntity<Iterable<Transaction>> getTransactionsByAccount(@PathVariable Long accountOne) {
         return new ResponseEntity<>(transactionService.transactionsByAccount(accountOne), HttpStatus.OK);
     }

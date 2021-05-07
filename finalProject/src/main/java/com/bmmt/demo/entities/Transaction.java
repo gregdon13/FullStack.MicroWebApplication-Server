@@ -4,12 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private LocalDate transactionDate;
     private Long accountOne;
     private Long accountTwo;
     private String transactionType;
@@ -19,7 +21,8 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(Long accountOne, Long accountTwo, String transactionType, Double amount, Long userId) {
+    public Transaction(LocalDate transactionDate, Long accountOne, Long accountTwo, String transactionType, Double amount, Long userId) {
+        this.transactionDate = transactionDate;
         this.accountOne = accountOne;
         this.accountTwo = accountTwo;
         this.transactionType = transactionType;
@@ -33,6 +36,14 @@ public class Transaction {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDate getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
     public Long getUserId() {
