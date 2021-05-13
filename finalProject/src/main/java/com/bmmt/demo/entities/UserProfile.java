@@ -101,4 +101,8 @@ public class UserProfile {
     public void setUserAccounts(Set<Account> userAccounts) {
         this.userAccounts = userAccounts;
     }
+
+    public void addUserAccount(Account account) {
+        this.userAccounts.add(account);
+    }
 }

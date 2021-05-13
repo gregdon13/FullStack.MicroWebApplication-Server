@@ -21,6 +21,10 @@ public class UserService {
 
     public UserProfile show(Long id) { return userRepository.findById(id).get(); }
 
+    public UserProfile findUserName(String userName) {
+        return userRepository.findUserByUserName(userName);
+    }
+
 
     public UserProfile update(Long id, UserProfile newUserProfile) {
         UserProfile original = userRepository.findById(id).get();

@@ -32,6 +32,13 @@ public class UserController {
     public ResponseEntity<UserProfile> show(@PathVariable Long id) {
         return new ResponseEntity<>(userService.show(id), HttpStatus.OK);
     }
+
+    // Greg added this
+    @GetMapping("/user/username/{userName}")
+    public ResponseEntity<UserProfile> findByUserName(@PathVariable String userName) {
+        return new ResponseEntity<>(userService.findUserName(userName), HttpStatus.OK);
+    }
+
     @PutMapping("/user/{id}")
     public ResponseEntity<UserProfile> update(@PathVariable Long id, UserProfile userProfile){
         return new ResponseEntity<>(userService.update(id, userProfile), HttpStatus.OK);

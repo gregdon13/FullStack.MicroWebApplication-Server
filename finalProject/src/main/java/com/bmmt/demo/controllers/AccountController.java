@@ -62,8 +62,8 @@ public class AccountController {
         return accountService.deposit(accountNumber, amount);
     }
 
-    @PutMapping("/account/withdraw/{accountNumber}/")
-    public Account withdrawFunds(@PathVariable Long accountNumber, Double amount) {
+    @PutMapping("/account/withdraw/{accountNumber}/{amount}")
+    public Account withdrawFunds(@PathVariable Long accountNumber, @PathVariable Double amount) {
         return accountService.withdraw(accountNumber, amount);
     }
 
