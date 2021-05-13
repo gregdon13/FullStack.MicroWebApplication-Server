@@ -4,6 +4,7 @@ import com.bmmt.demo.entities.Account;
 import com.bmmt.demo.entities.Transaction;
 import com.bmmt.demo.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.bmmt.demo.repositories.AccountRepository;
 
@@ -82,6 +83,7 @@ public class AccountService {
         ogAccount.setBalance(ogAccount.getBalance() - amount);
         return accountsRepository.save(ogAccount);
     }
+
 
 //    public Account transfer(Double amount, Long accountOne, Long accountTwo) {
 //    }
