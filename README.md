@@ -1,2 +1,2 @@
-Link to organization that contains final Front End and Back End version of project
+Navigate to new repo!
 * https://github.com/BMMTOrganization
