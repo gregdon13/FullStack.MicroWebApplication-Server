@@ -52,6 +52,7 @@ public class AccountController {
         return accountService.findOneUserAccount(userId, accountName);
     }
 
+
     @PutMapping("/account/{id}")
     public Account update(@PathVariable Long id, Account account) {
         return accountService.update(id, account);
