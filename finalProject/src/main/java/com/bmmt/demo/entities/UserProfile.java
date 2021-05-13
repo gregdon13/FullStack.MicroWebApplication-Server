@@ -3,6 +3,8 @@ package com.bmmt.demo.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class UserProfile {
@@ -17,6 +19,8 @@ public class UserProfile {
     private String occupation;
     private String userName;
     private String password;
+    @OneToMany
+    private Set<Account> userAccounts;
 
     public Long getId() {
         return id;
@@ -90,4 +94,15 @@ public class UserProfile {
         this.password = password;
     }
 
+    public Set<Account> getUserAccounts() {
+        return userAccounts;
+    }
+
+    public void setUserAccounts(Set<Account> userAccounts) {
+        this.userAccounts = userAccounts;
+    }
+
+    public void addUserAccount(Account account) {
+        this.userAccounts.add(account);
+    }
 }

@@ -71,24 +71,18 @@ public class AccountService {
         return accountsRepository.save(original);
     }
 
-    public Account deposit(Double amount, Long accountNumber) {
-        Account account = accountsRepository.findAccountByAccountNumber(accountNumber);
-        account.setBalance(account.getBalance() + amount);
-        Transaction transaction = new Transaction(LocalDate.now(), account.getAccountNumber(), null, "Deposit", amount, account.getUserId());
-        transactionRepository.save(transaction);
-        return accountsRepository.save(account);
+    public Account deposit(Long accountNumber, Double amount) {
+        Account ogAccount = accountsRepository.findAccountByAccountNumber(accountNumber);
+        ogAccount.setBalance(ogAccount.getBalance() + amount);
+        return accountsRepository.save(ogAccount);
     }
 
-    public Account withdraw(Double amount, Long accountNumber) {
-        Account account = accountsRepository.findAccountByAccountNumber(accountNumber);
-        account.setBalance(account.getBalance() - amount);
-        Transaction transaction = new Transaction(LocalDate.now(), account.getAccountNumber(), null, "Withdraw", amount, account.getUserId());
-        transactionRepository.save(transaction);
-        return accountsRepository.save(account);
+    public Account withdraw(Long accountNumber, Double amount) {
+        Account ogAccount = accountsRepository.findAccountByAccountNumber(accountNumber);
+        ogAccount.setBalance(ogAccount.getBalance() - amount);
+        return accountsRepository.save(ogAccount);
     }
 
-    public Account transfer(Double amount, Long accountOne, Long accountTwo) {
-        deposit(amount, accountTwo);
-        return withdraw(amount, accountOne);
-    }
+//    public Account transfer(Double amount, Long accountOne, Long accountTwo) {
+//    }
 }
