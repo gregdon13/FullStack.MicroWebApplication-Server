@@ -17,7 +17,8 @@ public class FaqController {
     }
 
     @PostMapping("/faq")
-    public ResponseEntity<Faq> create(Faq faq) {
+    public ResponseEntity<Faq> create(@RequestBody Faq faq) {
+        System.out.println(faq);
         return new ResponseEntity<>(faqService.create(faq), HttpStatus.CREATED);
     }
 
@@ -37,8 +38,8 @@ public class FaqController {
     }
 
     @DeleteMapping("/faq/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Faq faq){
-        return new ResponseEntity<>(faqService.delete(faq), HttpStatus.OK);
+    public ResponseEntity<Boolean> delete(@PathVariable Long id){
+        return new ResponseEntity<>(faqService.delete(id), HttpStatus.OK);
     }
 
 }
